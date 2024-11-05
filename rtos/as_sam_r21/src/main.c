@@ -87,9 +87,9 @@ int main(void)
 	
 	//CriaTarefa(tarefa_2, "Tarefa 2", PILHA_TAREFA_2, TAM_PILHA_2, 2);
     
-    CriaTarefa(tarefa_9, "Tarefa 9", PILHA_TAREFA_9, TAM_PILHA_9, 1);
+    	CriaTarefa(tarefa_9, "Tarefa 9", PILHA_TAREFA_9, TAM_PILHA_9, 1);
     
-    CriaTarefa(tarefa_10, "Tarefa 10", PILHA_TAREFA_10, TAM_PILHA_10, 4);
+    	CriaTarefa(tarefa_10, "Tarefa 10", PILHA_TAREFA_10, TAM_PILHA_10, 4);
 	
 	/* Cria tarefa ociosa do sistema */
 	CriaTarefa(tarefa_ociosa,"Tarefa ociosa", PILHA_TAREFA_OCIOSA, TAM_PILHA_OCIOSA, 0);
@@ -263,8 +263,8 @@ void tarefa_9(void) // Tarefa nova - Atividade da disciplina
     
 	for(;;)
 	{
-		a++;
-		port_pin_set_output_level(LED_0_PIN, !LED_0_ACTIVE);
+	a++;
+	port_pin_set_output_level(LED_0_PIN, !LED_0_ACTIVE);
         TarefaEspera(100);
         port_pin_set_output_level(LED_0_PIN, LED_0_ACTIVE);
         TarefaEspera(100);
