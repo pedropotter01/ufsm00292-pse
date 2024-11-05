@@ -41,6 +41,7 @@ void tarefa_6(void);
 void tarefa_7(void);
 void tarefa_8(void);
 void tarefa_9(void); // Tarefa nova - Atividade da disciplina
+void tarefa_10(void); // Tarefa nova - Atividade da disciplina
 
 /*
  * Configuracao dos tamanhos das pilhas
@@ -54,6 +55,7 @@ void tarefa_9(void); // Tarefa nova - Atividade da disciplina
 #define TAM_PILHA_7			(TAM_MINIMO_PILHA + 24)
 #define TAM_PILHA_8			(TAM_MINIMO_PILHA + 24)
 #define TAM_PILHA_9			(TAM_MINIMO_PILHA + 24) // Tarefa nova - Atividade da disciplina
+#define TAM_PILHA_10			(TAM_MINIMO_PILHA + 24) // Tarefa nova - Atividade da disciplina
 #define TAM_PILHA_OCIOSA	(TAM_MINIMO_PILHA + 24)
 
 /*
@@ -68,6 +70,7 @@ uint32_t PILHA_TAREFA_6[TAM_PILHA_6];
 uint32_t PILHA_TAREFA_7[TAM_PILHA_7];
 uint32_t PILHA_TAREFA_8[TAM_PILHA_8];
 uint32_t PILHA_TAREFA_9[TAM_PILHA_9]; // Tarefa nova - Atividade da disciplina
+uint32_t PILHA_TAREFA_10[TAM_PILHA_10]; // Tarefa nova - Atividade da disciplina
 uint32_t PILHA_TAREFA_OCIOSA[TAM_PILHA_OCIOSA];
 
 /*
@@ -80,11 +83,13 @@ int main(void)
 	/* Criacao das tarefas */
 	/* Parametros: ponteiro, nome, ponteiro da pilha, tamanho da pilha, prioridade da tarefa */
 	
-	// CriaTarefa(tarefa_1, "Tarefa 1", PILHA_TAREFA_1, TAM_PILHA_1, 1);
+	//CriaTarefa(tarefa_1, "Tarefa 1", PILHA_TAREFA_1, TAM_PILHA_1, 1);
 	
-	// CriaTarefa(tarefa_2, "Tarefa 2", PILHA_TAREFA_2, TAM_PILHA_2, 2);
+	//CriaTarefa(tarefa_2, "Tarefa 2", PILHA_TAREFA_2, TAM_PILHA_2, 2);
     
     CriaTarefa(tarefa_9, "Tarefa 9", PILHA_TAREFA_9, TAM_PILHA_9, 1);
+    
+    CriaTarefa(tarefa_10, "Tarefa 10", PILHA_TAREFA_10, TAM_PILHA_10, 4);
 	
 	/* Cria tarefa ociosa do sistema */
 	CriaTarefa(tarefa_ociosa,"Tarefa ociosa", PILHA_TAREFA_OCIOSA, TAM_PILHA_OCIOSA, 0);
@@ -109,9 +114,9 @@ void tarefa_1(void)
 	{
 		a++;
 		port_pin_set_output_level(LED_0_PIN, LED_0_ACTIVE); /* Liga LED. */
-		TarefaContinua(9);
+		TarefaContinua(2);
 	
-	}
+	} 
 }
 
 void tarefa_2(void)
@@ -259,9 +264,25 @@ void tarefa_9(void) // Tarefa nova - Atividade da disciplina
 	for(;;)
 	{
 		a++;
-		port_pin_set_output_level(LED_0_PIN, LED_0_ACTIVE); /* Liga LED. */
-        TarefaEspera(200); 
-        port_pin_set_output_level(LED_0_PIN, !LED_0_ACTIVE); /* Desliga LED. */
-        TarefaEspera(200); 
+		port_pin_set_output_level(LED_0_PIN, !LED_0_ACTIVE);
+        TarefaEspera(100);
+        port_pin_set_output_level(LED_0_PIN, LED_0_ACTIVE);
+        TarefaEspera(100);
+        port_pin_set_output_level(LED_0_PIN, !LED_0_ACTIVE);
+        TarefaEspera(100);
+        
+        TarefaContinua(2);
+	}
+}
+
+void tarefa_10(void) // Tarefa nova - Atividade da disciplina
+{
+    volatile uint16_t b = 0;
+	for(;;)
+	{
+        b+=1000;  
+        port_pin_set_output_level(LED_0_PIN, LED_0_ACTIVE);
+        for(int i = 0; i < 2000000; i++){}
+        TarefaSuspende(2);
 	}
 }
