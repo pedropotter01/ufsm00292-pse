@@ -61,7 +61,7 @@ void FSM_test() {
     FSM fsm;
     fsm_initialize(&fsm);
 
-    uint8_t transmission[] = {0x02, 0x03, 't', 'e', 's', 't', 'e', 0x05, 0x03};
+    uint8_t transmission[] = {0x02, 0x03, '1', '2', '3', 0x05, 0x03};
     bool result = false;
 
     for (int i = 0; i < sizeof(transmission); i++) {
